@@ -1,0 +1,11 @@
+---
+version: "3.7"
+services:
+  eldencli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./.ssh:/app/.ssh
+    ports:
+      - "222:2222"
