@@ -1,7 +1,7 @@
 # eldencli
 🚧  _wip_  🚧
 
-A cli tool to fetch informations about Elden Ring.
+A cli tool to fetch information about Elden Ring.
 
 ## Demo
 An unfinished demo version is accessible via `ssh eldencli.jon4hz.io -p 222`
