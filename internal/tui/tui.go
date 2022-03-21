@@ -79,10 +79,19 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				m.state = stateReady
 				cmds = append(cmds, m.list.SetItems(getInitialItems()))
 				return m, tea.Batch(cmds...)
+			case "enter":
+				m.state = stateViewObject
+				return m, nil
 			}
 
 		case stateViewObject:
-
+			switch msg.String() {
+			case "ctrl+c":
+				return m, tea.Quit
+			case "esc":
+				m.state = stateSelectObject
+				return m, nil
+			}
 		}
 
 	case tea.WindowSizeMsg:
@@ -107,5 +116,14 @@ func (m model) View() string {
 	if m.err != nil {
 		return DocStyle.Render(m.err.Error())
 	}
-	return DocStyle.Render(m.list.View())
+	switch m.state {
+	case stateViewObject:
+		switch o := m.list.SelectedItem().(ObjectItem).object.(type) {
+		case eldenring.Ammo:
+			return o.Render()
+		}
+		return ""
+	default:
+		return DocStyle.Render(m.list.View())
+	}
 }

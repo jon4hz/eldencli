@@ -64,7 +64,7 @@ func (c *Client) doRequest(ctx context.Context, endpoint, method string, expRes 
 	}
 }
 
-func (c *Client) GetAmmos(ctx context.Context) ([]Ammos, error) {
+func (c *Client) GetAmmos(ctx context.Context) ([]Ammo, error) {
 	e := "/ammos"
 	var ammos AmmosResult
 	if err := c.doRequest(ctx, e, http.MethodGet, &ammos); err != nil {
