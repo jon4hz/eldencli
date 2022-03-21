@@ -6,11 +6,10 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Version:          "devel", // TODO: change
-	TraverseChildren: true,
-	Use:              "eldencli",
-	Short:            "Search, Tarnished",
-	Long:             "",
+	Version: "devel", // TODO: change
+	Use:     "eldencli",
+	Short:   "Search, Tarnished",
+	Long:    "",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return root()
 	},
